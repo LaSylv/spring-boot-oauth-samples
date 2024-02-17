@@ -1,4 +1,4 @@
-# Spring Boot OAUTH2 Strava Example
+# Spring Boot OAuth2 Strava Example
 
 ## Used libraries
 
