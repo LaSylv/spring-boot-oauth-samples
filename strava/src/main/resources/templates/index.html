@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boot OAuth2 Strava</title>
+    <!-- Include htmx library -->
+    <script src="/htmx-1.9.10.min.js"></script>
+</head>
+<body>
+<div th:if="${#authorization.expression('isAuthenticated()')}">
+    <p th:text="'Welcome, ' + ${#authentication.principal.attributes.firstname}"></p>
+    <p th:text="${#authentication.principal}"></p>
+</div>
+<div th:if="${!#authorization.expression('isAuthenticated()')}">
+    <a href="/oauth2/authorization/strava">Login with Strava</a>
+</div>
+<h1>La vraie boucle de la Sara</h1>
+<div th:if="${#authorization.expression('isAuthenticated()')}">
+    <div id="runs" hx-get="/runs" hx-trigger="load"></div>
+</div>
+
+</body>
+</html>
